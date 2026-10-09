@@ -26,6 +26,7 @@ resource "aws_kinesis_firehose_delivery_stream" "events" {
     buffering_size      = var.buffer_size_mb
     buffering_interval  = var.buffer_interval_seconds
     compression_format  = "GZIP"
+    file_extension      = ".ndjson.gz" # readers like Spark pick the codec from the extension
 
     cloudwatch_logging_options {
       enabled         = true
